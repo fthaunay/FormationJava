@@ -1,0 +1,47 @@
+<style>* {
+	box-sizing: border-box;
+}
+
+/* reset CSS ou feuille de style, à voir*/
+header {
+	display:flex;
+	flex-direction:row;
+	background-color: lightgrey;
+	border-bottom: 1px solid black;
+	background-color: lightgrey;
+	flex-shrink :0;
+}
+
+/* body{
+	display:block;
+	height:100%;
+} */
+
+#titre {
+	display: block;
+	text-align: center;
+	width: 20em;
+}
+
+.entete {
+	margin-left: auto;
+	margin-right: auto;
+	width: 10em;
+	align-content: stretch;
+}
+
+#bouton2 {
+	display: block;
+	text-align: center;
+	width: 100%;
+	height: 25%;
+}
+
+#image {
+	margin-left: auto;
+	margin-right: auto;
+	width: 5em;
+}
+</
+style
+>

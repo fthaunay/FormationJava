@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"> 
+    <h:head>
+        <meta charset="utf-8" />
+        <title>Inscription</title>
+        <h:outputStylesheet library="default" name="css/form.css"  />
+    </h:head>
+    <h:body>
+      <h:form>
+         <fieldset>
+         	<legend>Inscription</legend>
+	     	<h:outputLabel for="login">Login <span class="requis">*</span></h:outputLabel>
+	        <h:inputText id="login" value="#{inscrireBean.joueur.login}" required="true" size="20" maxlength="60" />
+	        <h:message id="loginMessage" for="login" errorClass="erreur" />
+	        <br />
+	        
+	        <h:outputLabel for="pseudo">Pseudo <span class="requis">*</span></h:outputLabel>
+	        <h:inputText id="pseudo" value="#{inscrireBean.joueur.pseudo}" required="true" size="20" maxlength="60" />
+	        <h:message id="pseudoMessage" for="pseudo" errorClass="erreur" />
+	        <br />
+	
+	        <h:outputLabel for="motDePasse">Mot de passe <span class="requis">*</span></h:outputLabel>
+	        <h:inputSecret id="motDePasse" value="#{inscrireBean.joueur.password}" required="true" size="20" maxlength="20" />
+	        <h:message id="motDePasseMessage" for="motDePasse" errorClass="erreur" />
+	        <br />
+	
+	        <h:outputLabel for="confirmation">Confirmation du mot de passe <span class="requis">*</span></h:outputLabel>
+	        <h:inputSecret id="confirmation" value="#{inscrireBean.utilisateur.password}" required="true" size="20" maxlength="20" />
+	        <h:message id="confirmationMessage" for="confirmation" errorClass="erreur" />
+	        <br />
+		        
+	        <h:messages globalOnly="true" infoClass="info" />
+	
+	        <h:commandButton value="Inscription" action="#{inscrireBean.inscrire}" styleClass="sansLabel" />
+	        <br />
+          </fieldset>
+        </h:form> 	
+    </h:body>
+</html>
