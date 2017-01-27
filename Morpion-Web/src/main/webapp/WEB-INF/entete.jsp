@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <header>
-
 	<!-- le logo de l’application
 un rappel de l’utilisateur connecté
 un lien vers la page d’accueil
@@ -35,8 +34,6 @@ un lien pour se déconnecter.-->
 		</div>
 	</div>
 	<div id="image">
-		<img src="../grattageMorpion.jpg"></img> <img src="../grattageMorpion.PNG"></img>
-		<img
-			src="https://poilsagratter.files.wordpress.com/2013/08/grattage_morpion.jpg?w=177&h=180"></img>
+		<img src="https://poilsagratter.files.wordpress.com/2013/08/grattage_morpion.jpg?w=177&h=180"></img>
 	</div>
 </header>

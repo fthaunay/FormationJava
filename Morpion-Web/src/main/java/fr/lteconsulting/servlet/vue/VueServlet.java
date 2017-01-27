@@ -48,7 +48,6 @@ public abstract class VueServlet extends HttpServlet {
 	
 	protected void vueLogin(HttpServletRequest request, HttpServletResponse response)
 					throws ServletException, IOException{
-		System.out.println("dans vueLogin");
 		callJsp("page de connection", false, "login", request, response);
 	}
 	
@@ -64,7 +63,6 @@ public abstract class VueServlet extends HttpServlet {
 					throws ServletException, IOException{
 		request.setAttribute("parties", parties);
 		request.setAttribute("joueurConnecte", joueurConnecte);
-		System.out.println("dans vueAccueil");
 		callJsp("Page d'accueil", false, "accueil", request, response);
 	}
 	
@@ -79,19 +77,16 @@ public abstract class VueServlet extends HttpServlet {
 	
 	protected void vueCreationCompte(HttpServletRequest request, HttpServletResponse response)
 					throws ServletException, IOException{
-		System.out.println("dans vueCreationCompte");
 		callJsp("Creation de compte", false, "creationCompte", request, response);
 	}
 	
 	protected void vueMAJCompte(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
-		System.out.println("dans vueMAJCompte");
 		callJsp("Mise à jour du compte", false, "majCompte", request, response);
 }
 	
 	protected void vueCreationPartie(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
-		System.out.println("dans vueCreationPartie");
 		callJsp("Creation de partie", false, "creationPartie", request, response);
 }
 	
@@ -105,7 +100,6 @@ public abstract class VueServlet extends HttpServlet {
 	
 	protected void vuePartieAttente(HttpServletRequest request, HttpServletResponse response,
 			Partie partie) throws ServletException, IOException{
-		System.out.println("dans vuePartieAttente");
 		request.setAttribute("partie", partie);
 		callJsp("Partie "+partie.getName()+" en attente", true, "partieAttente", request, response);
 	}
@@ -113,22 +107,15 @@ public abstract class VueServlet extends HttpServlet {
 	protected void vuePartie(Plateau plateau, Partie partie, Joueur joueurConnecte, 
 			HttpServletRequest request, HttpServletResponse response)
 					throws ServletException, IOException{
-		System.out.println("dans vuePartie");
 		
 		boolean doitRaffraichirPage = false;
 	
 		Partie partieEnCours = partieDao.findById(partie.getId());
-		System.out.println("Partie en cours " + partieEnCours.getName());
-	//	System.out.println("JoueurCourant " + partieEnCours.joueurCourant().getLogin());
-		
-		request.setAttribute("plateau", plateau);
-		request.setAttribute("partie", partieEnCours);
+		request.setAttribute("identifiantPartie", partieEnCours.getId());
 		request.setAttribute("joueurConnecte", joueurConnecte);
+		request.setAttribute("idJoueurConnecte", joueurConnecte.getId());
 		
-		
-		if ( partieEnCours.joueurCourant() != null ){
-		 doitRaffraichirPage = (!joueurConnecte.getLogin().equals(partieEnCours.joueurCourant().getLogin()));
-		}
+
 		callJsp("Page de la partie "+partieEnCours.getName(), doitRaffraichirPage, "partie", request, response);
 	}
 	
@@ -153,12 +140,6 @@ public abstract class VueServlet extends HttpServlet {
 	 * @throws ServletException 
 	 */
 	
-	/*private void callJsp(String name, HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{
-		getServletContext().getRequestDispatcher("/WEB-INF/"+name+".jsp")
-		.forward(request,  response);
-	}
-	*/
 	
 	private void callJsp( String pageTitle, boolean autoReload, String name,
 			HttpServletRequest request, HttpServletResponse response )

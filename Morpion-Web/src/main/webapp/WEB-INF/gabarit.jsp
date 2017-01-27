@@ -14,7 +14,9 @@
 
  	<link rel="stylesheet" href="entete.css">  
  	<link rel="stylesheet" href="${pageContentCss}"> 
- 	<link rel="stylesheet" href="milligram.min.css">     
+ <!-- 	<link rel="stylesheet" href="milligram.min.css">  -->
+ 	
+ 	  
 </head>
 
 <body>

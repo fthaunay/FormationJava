@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.engine.CascadeStyle;
 
 @Entity
 @Table(name = "Partie")
@@ -53,6 +54,7 @@ public class Partie {
 	
 	@Column
 	private java.util.Date dateModification;
+	
 	
 		
 	
@@ -137,12 +139,18 @@ public class Partie {
 	}
 	
 	public Joueur joueurCourant(){
+		
 		int nbCasesPleines = plateau.nbCases() - plateau.casesVides();
 		
 		Joueur joueurCourant = getJoueurs().get(nbCasesPleines % 2);
 		if (joueurGagnant != null){
 			joueurCourant = null;
 		}
+		
+		if (plateau.casesVides()==0){
+			joueurCourant = null;
+		}
+	
 		return joueurCourant;
 	}
 	
@@ -163,7 +171,7 @@ public class Partie {
 	
 	public boolean peutContinuer(Joueur joueur){
 		// La partie peut être continuée si elle n'est pas terminée ...
-		if(getJoueurGagnant()!=null){
+		if (plateau.casesVides()==0){
 			return false;
 		}
 		// ... par un joueur inscrit.
@@ -219,6 +227,10 @@ public class Partie {
 		return joueurGagnant;
 	}
 
+	public boolean estTerminee(){
+		return (plateau.casesVides() == 0 );
+	}
+	
 	//**************************************	
 		// Methodes protected
 			

@@ -84,7 +84,12 @@ public class PartieDao {
 	public Joueur joueurGagnant(String idPartie, Joueur joueurConnecte, int x, int y){
 		Partie p = findById(idPartie);
 		Joueur j = em.find(Joueur.class, joueurConnecte.getId());
+		
 		Joueur joueurGagnant = p.getGagnant(x, y, j);
+		Joueur joueurGagnant2 = p.getJoueurGagnant();
+		System.out.println("dans parrtie dao");
+		System.out.println(joueurGagnant);
+		System.out.println(joueurGagnant2);
 		actualiserDate(p);
 		em.merge(p);
 		return joueurGagnant;

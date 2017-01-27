@@ -33,7 +33,7 @@ main {
 	border: 2px solid grey;
 }
 
-#plateau {
+#board {
 	height: 20em;
 	width: 20em;
 	flex-direction: column;
@@ -41,7 +41,7 @@ main {
 	display: flex;
 }
 
-.colonne {
+.ligne {
 	display: flex;
 	flex-grow: 1;
 	background-color: limegreen;

@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class SecurityFilter implements Filter {
 
 	private List<String> urlsAutorisees;
@@ -23,16 +23,26 @@ public class SecurityFilter implements Filter {
 	public void init(FilterConfig filterConfig) throws ServletException {
 
 		String contextPath = filterConfig.getServletContext().getContextPath();
+		System.out.println("contextPath = " + contextPath );
 
 		urlsAutorisees = Arrays.asList(contextPath + "/entete.css",
 				contextPath + "/login", contextPath + "/index.html",
 				contextPath + "/creationCompte.html",
-				contextPath + "/creerCompte");
+				contextPath + "/creerCompte", 
+				contextPath + "src/main/webapp/grattageMorpion.PNG", 
+				contextPath + "grattageMorpion.PNG", 
+				contextPath +"/jquery-3.1.1.js", 
+				contextPath +"/crud-contacts.html", 
+				contextPath +"/grattageMorpion.PNG", 
+				contextPath +"/contacts" 
+				);
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
+		
+		System.out.println("dans doFilter");
 
 		if (request instanceof HttpServletRequest) {
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -53,6 +63,7 @@ public class SecurityFilter implements Filter {
 
 	@Override
 	public void destroy() {
+		System.out.println("dans destroy");
 
 	}
 }

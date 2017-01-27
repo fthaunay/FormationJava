@@ -1,7 +1,6 @@
 package fr.lteconsulting.servlet.action;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

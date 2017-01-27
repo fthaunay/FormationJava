@@ -1,7 +1,6 @@
 package fr.lteconsulting.ejb;
 
 import javax.ejb.EJB;
-import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 
 import fr.lteconsulting.doa.PartieDao;

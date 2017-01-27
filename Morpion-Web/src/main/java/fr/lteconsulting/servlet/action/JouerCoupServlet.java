@@ -48,10 +48,12 @@ public class JouerCoupServlet extends ActionServlet {
 			// Teste si la partie est terminée, et si oui, incrémente les scores
 			// des joueurs
 
+			// Teste si la partie est terminée (plateau plein ou joueur gagnant)
 			Joueur joueurGagnant = partieDao.joueurGagnant(idPartie,
 					joueurConnecte, Integer.valueOf(x), Integer.valueOf(y));
 
-			if (joueurGagnant != null) {
+			if (p.getPlateau().casesVides() == 0 || joueurGagnant != null) {
+
 				for (Joueur joueur : p.getJoueurs()) {
 					joueurDao.updateScore(joueur, p);
 				}

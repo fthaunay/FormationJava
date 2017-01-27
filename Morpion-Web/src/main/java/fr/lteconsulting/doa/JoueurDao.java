@@ -12,17 +12,15 @@ import fr.lteconsulting.Partie;
 
 @Stateless
 public class JoueurDao {
-	
-	
+
 	@EJB
 	private PartieDao partieDao;
-	
+
 	/**
 	 * 
 	 * 
-	 * Dans la relation @ManyToMany Partie/Joueur
-	 * La partie est propriétaire, donc les persist 
-	 * doivent être faits du côté Partie
+	 * Dans la relation @ManyToMany Partie/Joueur La partie est propriétaire,
+	 * donc les persist doivent être faits du côté Partie
 	 *
 	 */
 
@@ -33,13 +31,13 @@ public class JoueurDao {
 			String caractere) {
 		Joueur j = new Joueur(pseudo, login, password, caractere);
 		em.persist(j);
-	
+
 		return j;
 	}
-	
-	public Joueur modifierJoueur(String ancienLogin, String pseudo, String login, String password,
-			String caractere) {
-		
+
+	public Joueur modifierJoueur(String ancienLogin, String pseudo,
+			String login, String password, String caractere) {
+
 		Joueur j = findByLogin(ancienLogin);
 		j.setPseudo(pseudo);
 		j.setLogin(login);
@@ -73,18 +71,18 @@ public class JoueurDao {
 			return null;
 		}
 	}
-	
-	
-	
-	public void updateScore(Joueur joueur, Partie partie){
+
+	public void updateScore(Joueur joueur, Partie partie) {
 		Joueur j = findByLogin(joueur.getLogin());
 		Partie p = partieDao.findById(partie.getId());
 		j.addPartieJouee();
-		if(j.getLogin().equals(p.getJoueurGagnant().getLogin())){
-			j.addPartieGagnee();
+		if (p.getJoueurGagnant() != null) {
+			if (j.getLogin().equals(p.getJoueurGagnant().getLogin())) {
+				j.addPartieGagnee();
+			}
 		}
 		em.merge(j);
 		em.merge(p);
 	}
-	
+
 }
